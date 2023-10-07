@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .body-scroll {
+    padding-right: calc(20px - (100vw - 100%));
+  }
+
+  .spinnerPos {
+    top: calc(50% - 48px);
+    right: calc(50% - 48px);
+  }
+
+  :root {
+    color-scheme: dark;
+  }
+
+  .nav-link_hover {
+    @apply relative before:content-[""] before:absolute before:left-1/2 before:h-[1px] before:w-0 before:bottom-0 before:bg-info before:transition-all before:ease-in-out before:duration-300 hover:before:w-full hover:before:left-0;
+  }
+}
