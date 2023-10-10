@@ -11,9 +11,21 @@
     top: calc(50% - 48px);
     right: calc(50% - 48px);
   }
+  .playerTriaglePos{
+    top: calc(50% - 46px);
+    right: calc(50% - 40px);
+  }
 
   :root {
     color-scheme: dark;
+  }
+
+  .fullHeight{
+    min-height: calc(100vh - 80px);
+  }
+
+  .nav-link_active {
+    @apply relative before:content-[""] before:absolute before:left-0 before:h-[1px] before:w-full before:bottom-0 before:bg-info before:transition-all before:ease-in-out before:duration-300;
   }
 
   .nav-link_hover {

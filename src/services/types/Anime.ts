@@ -36,7 +36,7 @@ export const enum IGenres {
   shoujoAi = 'shoujo-ai',
   shounen = 'shounen',
   shounenAi = 'shounen-ai',
-  sliceOfLife = 'slice-of-Life',
+  sliceOfLife = 'slice-of-life',
   space = 'space',
   sports = 'sports',
   superPower = 'super-power',

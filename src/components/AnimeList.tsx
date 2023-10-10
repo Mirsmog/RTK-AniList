@@ -1,49 +1,54 @@
 import { useInView } from "react-intersection-observer";
+import React, { FC } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
-import NotFound from "../pages/NotFound";
-import { useGetAnimeQuery } from "../services/animeApi";
-import SearchCard from "./SearchCard";
-import SearchCardSkelet from "./SearchCard/skeleton";
+import { setPage, setSearchPage } from "../redux/slices/filterSlice";
+import MainCard from "./mainCard";
+import MainCardSkelet from "./mainCard/skeleton";
 import Spinner from "./Spinner";
-import React from "react";
-import { setPage } from "../redux/slices/filterSlice";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { SerializedError } from "@reduxjs/toolkit";
+import { Anime } from "../services/types/Anime";
+import { useLocation } from "react-router-dom";
 
-const AnimeList = () => {
-    const { searchValue, page, genre } = useAppSelector((state) => state.filter);
-    const { ref, inView } = useInView({});
-    const dispatch = useAppDispatch();
+interface AniListProps {
+	animeList: Anime[];
+	hasNextPage: boolean;
+	error: FetchBaseQueryError | SerializedError | undefined;
+	isLoading: boolean;
+	isSuccess: boolean;
+	isFetching: boolean;
+}
 
-    const { data, error, isLoading, isFetching, isSuccess } = useGetAnimeQuery({
-        searchValue,
-        genre,
-        page,
-    });
+const AnimeList: FC<AniListProps> = ({ animeList, hasNextPage, isFetching, isLoading, isSuccess }) => {
+	const { ref, inView } = useInView({});
+	const page = useAppSelector((state) => state.filter.present.page);
+	const searchPage = useAppSelector((state) => state.filter.present.searchPage);
+	const path = useLocation()
+	const isSearchPage = path.pathname.includes('/search/')
+	const dispatch = useAppDispatch();
 
-    const animeList = data?.results ? data.results : [];
-    const hasNextPage = data?.hasNextPage ? data.hasNextPage : false;
+	React.useEffect(() => {
+		inView && hasNextPage && nextPage();
+	}, [isSuccess, inView]);
 
-    React.useEffect(() => {
-        inView && hasNextPage && nextPage();
-    }, [isSuccess, inView]);
+	const nextPage = () => {
+		isSearchPage
+			? dispatch(setSearchPage(searchPage + 1))
+			: dispatch(setPage(page + 1));
+	};
 
+	const items = animeList.map((obj) => (
+		<MainCard {...obj} key={obj.id} />
+	));
+	const skeletons = [...Array(12)].map((_, i) => <MainCardSkelet key={i} />);
 
-    const nextPage = () => {
-        dispatch(setPage(page + 1));
-    };
-
-    if (error) return <NotFound />;
-
-    const items = animeList.map((obj) => (
-        <SearchCard {...obj} key={obj.id} />
-    ));
-    const skeletons = [...Array(12)].map((_, i) => <SearchCardSkelet key={i} />);
-
-    return (
-        <ul className='flex flex-wrap gap-x-6 flex-gap gap-y-8 mb-12'>
-            {!isLoading ? items : skeletons}
-            {isSuccess && <div ref={ref}></div>}
-            {isFetching && !isLoading && <Spinner />}
-        </ul>
-    )
+	return (
+		<ul className='flex flex-wrap gap-x-6 flex-gap gap-y-8 mb-12'>
+			{!isLoading ? items : skeletons}
+			{isSuccess && <div ref={ref}></div>}
+			{isFetching && !isLoading && <Spinner />}
+		</ul>
+	)
 }
 export default AnimeList
+

@@ -7,18 +7,28 @@ export const animeApi = createApi({
   reducerPath: 'animeApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://manga-project-ten.vercel.app/anime/gogoanime/' }),
   endpoints: (build) => ({
-    getAnime: build.query<IGetData, { searchValue?: string; page?: number; genre?: string }>({
-      query: ({ searchValue = '', page = 1, genre = '' }) => ({
-        url: searchValue
-          ? `${searchValue}?page=${page}`
-          : genre
-          ? `genre/${genre}?page=${page}`
-          : `top-airing?page=${page}`,
+    getSearchedAnime: build.query<IGetData, string>({ query: (value) => `${value}` }),
+
+    getAnimeInfo: build.query<AnimeInfo, string>({ query: (id = '') => `info/${id}` }),
+
+    getAnimeEpisode: build.query<animeEpisode, string>({
+      query: (episodeId = '') => ({
+        url: `/watch/${episodeId}`,
+        params: { server: 'vidstreaming' },
         method: 'GET',
       }),
+    }),
+
+    getAnime: build.query<IGetData, { page?: number; genre?: string }>({
+      query: ({ page = 1, genre = '' }) => ({
+        url: genre ? `genre/${genre}?page=${page}` : `top-airing?page=${page}`,
+        method: 'GET',
+      }),
+
       serializeQueryArgs: ({ endpointName }) => {
         return endpointName;
       },
+
       merge: (currentCache, newItem) => {
         // check for dublies
         for (const item of newItem.results) {
@@ -35,18 +45,41 @@ export const animeApi = createApi({
         return currentArg !== previousArg;
       },
     }),
-    getAnimeInfo: build.query<AnimeInfo, string>({
-      query: (id = '') => `info/${id}`,
-    }),
-    getAnimeEpisode: build.query<animeEpisode, string>({
-      query: (episodeId = '') => ({
-        url: `/watch/${episodeId}`,
-        params: { server: 'vidstreaming' },
+
+    getSearchedAll: build.query<IGetData, { query?: string; page?: number }>({
+      query: ({ query = '', page = 1 }) => ({
+        url: `${query}?page=${page}`,
         method: 'GET',
       }),
+
+      serializeQueryArgs: ({ endpointName }) => {
+        return endpointName;
+      },
+
+      merge: (currentCache, newItem) => {
+        // check for dublies
+        for (const item of newItem.results) {
+          const isDuplicate = currentCache.results.find((obj) => obj.id === item.id);
+          if (!isDuplicate) {
+            currentCache.results.push(item);
+          }
+          if (newItem.hasNextPage === false) {
+            currentCache.hasNextPage = false;
+          }
+        }
+      },
+      forceRefetch({ currentArg, previousArg }) {
+        return currentArg !== previousArg;
+      },
     }),
   }),
 });
 ``;
 
-export const { useGetAnimeQuery, useGetAnimeInfoQuery, useGetAnimeEpisodeQuery } = animeApi;
+export const {
+  useGetAnimeQuery,
+  useGetAnimeInfoQuery,
+  useGetSearchedAllQuery,
+  useGetAnimeEpisodeQuery,
+  useGetSearchedAnimeQuery,
+} = animeApi;

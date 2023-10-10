@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.6",
+    "@types/lodash.chunk": "^4.2.7",
     "axios": "^1.5.1",
+    "lodash.chunk": "^4.2.0",
     "lodash.debounce": "^4.0.8",
     "react": "^18.2.0",
     "react-content-loader": "^6.2.1",
@@ -19,14 +21,15 @@
     "react-intersection-observer": "^9.5.2",
     "react-redux": "^8.1.3",
     "react-router-dom": "^6.16.0",
-    "react-scroll": "^1.8.9"
+    "react-scroll": "^1.8.9",
+    "redux-undo": "^1.1.0"
   },
   "devDependencies": {
-    "@types/react-scroll": "^1.8.8",
     "@types/lodash.debounce": "^4.0.7",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@types/react-redux": "^7.1.27",
+    "@types/react-scroll": "^1.8.8",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
