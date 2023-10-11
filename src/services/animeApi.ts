@@ -10,7 +10,6 @@ export const animeApi = createApi({
     getSearchedAnime: build.query<IGetData, string>({ query: (value) => `${value}` }),
 
     getAnimeInfo: build.query<AnimeInfo, string>({ query: (id = '') => `info/${id}` }),
-
     getAnimeEpisode: build.query<animeEpisode, string>({
       query: (episodeId = '') => ({
         url: `/watch/${episodeId}`,
@@ -72,6 +71,21 @@ export const animeApi = createApi({
         return currentArg !== previousArg;
       },
     }),
+
+    getBookmarks: build.query({
+      query: () => ({
+        url: 'https://65266250917d673fd76c20bc.mockapi.io/favorites',
+        method: 'GET',
+      }),
+    }),
+
+    addBookmark: build.mutation<string, object>({
+      query: (nameId) => ({
+        url: 'https://65266250917d673fd76c20bc.mockapi.io/favorites',
+        method: 'POST',
+        body: nameId,
+      }),
+    }),
   }),
 });
 ``;
@@ -82,4 +96,6 @@ export const {
   useGetSearchedAllQuery,
   useGetAnimeEpisodeQuery,
   useGetSearchedAnimeQuery,
+  useAddBookmarkMutation,
+  useGetBookmarksQuery,
 } = animeApi;

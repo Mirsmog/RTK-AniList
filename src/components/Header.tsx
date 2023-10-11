@@ -36,7 +36,7 @@ const Header: FC<Props> = ({ overlay }) => {
         <nav>
           <ul className='flex gap-4'>
             <NavLink className={({ isActive }) => isActive ? 'text-info nav-link_active' : 'nav-link_hover'} to={'/'}>Home</NavLink>
-            <NavLink className={({ isActive }) => isActive ? 'text-info nav-link_active' : 'nav-link_hover'} to={'/favorites'}>Favorites</NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'text-info nav-link_active' : 'nav-link_hover'} to={'/favorites'}>Bookmark</NavLink>
           </ul>
         </nav>
       </div>
