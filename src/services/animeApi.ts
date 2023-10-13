@@ -2,10 +2,12 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IGetData } from '../models/anime.model';
 import { AnimeInfo } from './types/AnimeInfo';
 import { animeEpisode } from './types/AnimeEpisode';
+import { Bookmarks } from './types/Bookmarks';
 
 export const animeApi = createApi({
   reducerPath: 'animeApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://manga-project-ten.vercel.app/anime/gogoanime/' }),
+  tagTypes: ['Bookmarks'],
   endpoints: (build) => ({
     getSearchedAnime: build.query<IGetData, string>({ query: (value) => `${value}` }),
 
@@ -72,11 +74,12 @@ export const animeApi = createApi({
       },
     }),
 
-    getBookmarks: build.query({
+    getBookmarks: build.query<Bookmarks[], void>({
       query: () => ({
         url: 'https://65266250917d673fd76c20bc.mockapi.io/favorites',
         method: 'GET',
       }),
+      providesTags: () => ['Bookmarks'],
     }),
 
     addBookmark: build.mutation<string, object>({
@@ -85,6 +88,14 @@ export const animeApi = createApi({
         method: 'POST',
         body: nameId,
       }),
+      invalidatesTags: ['Bookmarks'],
+    }),
+    deleteBookmark: build.mutation<string, string | null>({
+      query: (nameId = '') => ({
+        url: `https://65266250917d673fd76c20bc.mockapi.io/favorites/${nameId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Bookmarks'],
     }),
   }),
 });
@@ -98,4 +109,5 @@ export const {
   useGetSearchedAnimeQuery,
   useAddBookmarkMutation,
   useGetBookmarksQuery,
+  useDeleteBookmarkMutation,
 } = animeApi;
