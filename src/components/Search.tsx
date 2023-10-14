@@ -6,6 +6,7 @@ import { animeApi, useGetSearchedAnimeQuery } from '../services/animeApi';
 import SearchCard from './SearchCard';
 import { Link } from 'react-router-dom';
 import store from '../redux/store';
+import MainCard from './mainCard';
 
 interface SearchProps {
   searchRef: React.RefObject<HTMLDivElement>;
@@ -76,7 +77,8 @@ const Search: FC<SearchProps> = ({ searchRef, visible }) => {
       <div className={`rounded-xl absolute bg-slate-700 w-full top-[82%] z-20 p-6 pr-0 shadow-slate-900 drop-shadow-md shadow-xl rounded-t-none border-slate-600 border-2 overflow-hidden transition-opacity duration-300 ${(!visible || resultList.length == 0) && 'opacity-0 h-0 py-0'} ${hasNextPage ? 'pb-2' : ''} searchTarget`}>
         <ul className={`flex flex-wrap gap-8 justify-center max-h-[520px] overflow-y-auto `}>
           {resultList && resultList.map((item) =>
-            <SearchCard key={item.id} {...item} />
+            // <SearchCard key={item.id} {...item} />
+            <MainCard isSearchCard={true} key={item.id} {...item} />
           )}
         </ul>
         {

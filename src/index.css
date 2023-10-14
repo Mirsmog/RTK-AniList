@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer components {
+  .wrapper,
+  main {
+    height: 100%;
+  }
+
   .body-scroll {
     padding-right: calc(20px - (100vw - 100%));
   }
@@ -11,7 +16,7 @@
     top: calc(50% - 48px);
     right: calc(50% - 48px);
   }
-  .playerTriaglePos{
+  .playerTriaglePos {
     top: calc(50% - 46px);
     right: calc(50% - 40px);
   }
@@ -20,7 +25,7 @@
     color-scheme: dark;
   }
 
-  .fullHeight{
+  .fullHeight {
     min-height: calc(100vh - 80px);
   }
 

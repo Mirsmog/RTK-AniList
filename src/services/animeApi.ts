@@ -82,7 +82,7 @@ export const animeApi = createApi({
       providesTags: () => ['Bookmarks'],
     }),
 
-    addBookmark: build.mutation<string, object>({
+    addBookmark: build.mutation<string, { nameId: string }>({
       query: (nameId) => ({
         url: 'https://65266250917d673fd76c20bc.mockapi.io/favorites',
         method: 'POST',

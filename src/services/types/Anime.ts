@@ -56,5 +56,5 @@ export type Anime = {
   image: string;
   releaseDate: string;
   subOrDub?: 'sub' | 'dub';
-  genres?: IGenres;
+  genres?: IGenres[];
 };
