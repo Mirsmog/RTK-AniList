@@ -34,6 +34,10 @@ const Player: React.FC<PlayerProps> = ({ image, episodes, title }) => {
   };
 
   React.useEffect(() => {
+    setWatched(localWatched);
+  }, [title]);
+
+  React.useEffect(() => {
     if (watched.length > 0) {
       localStorage.setItem(title + '_WATCHED_EPISODE', JSON.stringify(watched));
     }
@@ -58,7 +62,6 @@ const Player: React.FC<PlayerProps> = ({ image, episodes, title }) => {
           } after:absolute after:inset-8 after:top-0 after:right-0 after:w-full after:h-full after:content-[''] after:bg-black after:z-[20]`}
         ></div>
         <iframe
-          allow='autoplay'
           allowFullScreen
           scrolling='no'
           src={episodeUrl}
