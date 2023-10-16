@@ -60,7 +60,7 @@ const Search: FC<SearchProps> = ({ searchRef, visible }) => {
         value={value}
         onChange={(e) => onInput(e)}
         placeholder='Search...'
-        className={`w-[400px] focus:border-info border-2 z-30 relative rounded-xl bg-slate-600 outline-none px-12 py-2 text-xl bg-no-repeat bg-[length:25px] bg-[center_left_14px] bg-[url("/src/assets/search.svg")] placeholder:text-lg border-slate-500`}
+        className={`w-[400px] focus:border-info border-2 z-30 relative rounded-xl bg-slate-600 outline-none px-12 py-2 text-xl bg-no-repeat bg-[length:25px] bg-[center_left_14px] bg-[url("./assets/search.svg")] placeholder:text-lg border-slate-500`}
       />
       {value && !isFetching && (
         <img
@@ -76,7 +76,6 @@ const Search: FC<SearchProps> = ({ searchRef, visible }) => {
       <div className={`rounded-xl absolute bg-slate-700 w-full top-[82%] z-20 p-6 pr-0 shadow-slate-900 drop-shadow-md shadow-xl rounded-t-none border-slate-600 border-2 overflow-hidden transition-opacity duration-300 ${(!visible || resultList.length == 0) && 'opacity-0 h-0 py-0'} ${hasNextPage ? 'pb-2' : ''} searchTarget`}>
         <ul className={`flex flex-wrap gap-8 justify-center max-h-[520px] overflow-y-auto `}>
           {resultList && resultList.map((item) =>
-            // <SearchCard key={item.id} {...item} />
             <MainCard isSearchCard={true} key={item.id} {...item} />
           )}
         </ul>
