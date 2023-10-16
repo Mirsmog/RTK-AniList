@@ -6,7 +6,6 @@ import { animeApi, useGetSearchedAnimeQuery } from '../services/animeApi';
 import { Link } from 'react-router-dom';
 import store from '../redux/store';
 import MainCard from './mainCard';
-import clearIcon from '../assets/clear.svg'
 
 interface SearchProps {
   searchRef: React.RefObject<HTMLDivElement>;
