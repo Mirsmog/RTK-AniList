@@ -1,17 +1,16 @@
-import React, { FC } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React from 'react';
+import {  useParams } from 'react-router-dom';
 import { useGetAnimeInfoQuery } from '../services/animeApi';
 import Player from '../components/VideoPlayer/Player';
 import FullCard from '../components/FullCard';
 import FullAnimeSkelet from '../components/FullAnimeSkelet';
 
-const AnimeContent: FC = () => {
+const AnimeContent: React.FC = () => {
   const { id = '' } = useParams();
 
   const {
     data: anime,
     isLoading,
-    isSuccess,
     error,
   } = useGetAnimeInfoQuery(id);
   
