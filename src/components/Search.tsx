@@ -3,7 +3,6 @@ import debounce from 'lodash.debounce';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 import { setPage, setSearchPage, setSearchValue } from '../redux/slices/filterSlice';
 import { animeApi, useGetSearchedAnimeQuery } from '../services/animeApi';
-import SearchCard from './SearchCard';
 import { Link } from 'react-router-dom';
 import store from '../redux/store';
 import MainCard from './mainCard';
@@ -12,7 +11,7 @@ interface SearchProps {
   searchRef: React.RefObject<HTMLDivElement>;
   visible: boolean;
 }
-
+  
 const Search: FC<SearchProps> = ({ searchRef, visible }) => {
   const [value, setValue] = React.useState('');
   const inputRef = React.useRef<HTMLInputElement | null>(null);

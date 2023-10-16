@@ -8,10 +8,6 @@
     height: 100%;
   }
 
-  .body-scroll {
-    padding-right: calc(20px - (100vw - 100%));
-  }
-
   .spinnerPos {
     top: calc(50% - 48px);
     right: calc(50% - 48px);
