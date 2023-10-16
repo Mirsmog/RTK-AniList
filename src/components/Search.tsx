@@ -6,6 +6,7 @@ import { animeApi, useGetSearchedAnimeQuery } from '../services/animeApi';
 import { Link } from 'react-router-dom';
 import store from '../redux/store';
 import MainCard from './mainCard';
+import clearIcon from '../assets/clear.svg'
 
 interface SearchProps {
   searchRef: React.RefObject<HTMLDivElement>;
@@ -66,7 +67,7 @@ const Search: FC<SearchProps> = ({ searchRef, visible }) => {
         <img
           onClick={onClearInput}
           className='absolute bottom-0 right-0 h-[48px] opacity-70 hover:opacity-100 cursor-pointer z-30'
-          src='./assets/clear.svg'
+          src={clearIcon}
           alt='clear'
         />
       )}
