@@ -49,6 +49,7 @@ const MainCard: FC<ISearchProps> = ({ image, title, id, isSearchCard, releaseDat
       <Link
         className=' group max-w-[140px] w-full object-cover min-h-[200px] bg-black rounded-md overflow-hidden'
         to={`anime/${id}`}
+        onClick={() => document.title = title}
       >
         <img
           className='w-full h-full object-cover hover:opacity-50 transition-opacity duration-150 '
@@ -96,7 +97,7 @@ const MainCard: FC<ISearchProps> = ({ image, title, id, isSearchCard, releaseDat
           strokeWidth='1.5'
         />
       </svg>
-      <Link to={`/anime/${id}`} className='block rounded-md overflow-hidden'>
+      <Link to={`/anime/${id}`} className='block rounded-md overflow-hidden' onClick={() => document.title = title}>
         <div className='relative before:content-[""] before:z-10 before:absolute before:block before:w-full before:h-full before:bg-gray-900 before:opacity-0 before:top-0 before:right-0 before:bg-no-repeat before:bg-[length:70px] before:bg-center before:bg-[url("/src/assets/play.svg")] cursor-pointer group-hover:before:opacity-90 before:transition-all before:duration-20 before:rounded-md'>
           <img
             className='h-auto object-cover w-full max-h-[300px] min-h-[300px] min-w-[200px] rounded-lg'

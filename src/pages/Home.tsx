@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import AnimeList from '../components/AnimeList';
 import { useAppSelector } from '../hooks/hooks';
 import Genres from '../components/Genres';
@@ -15,20 +15,10 @@ const Home: FC = () => {
   const animeList = data?.results ? data.results : [];
   const hasNextPage = data?.hasNextPage ? data.hasNextPage : false;
 
-  // const prevGenre = useAppSelector((state) => {
-  //   if (state.filter.past.length > 0) {
-  //     return state.filter.past[state.filter.past.length - 1].genre;
-  //   } else {
-  //     return '';
-  //   }
-  // })
-
-  // React.useEffect(() => {
-  //   genre !== prevGenre || '' && store.dispatch(animeApi.util.resetApiState());
-  //   genre && dispatch(setSearchValue(''));
-  //   console.log(genre, prevGenre)
-  //   dispatch(setPage(1));
-  // }, [genre]);
+  React.useEffect(() => {
+    document.title = 'RTK AniList'
+    return () => window.scrollTo({ top: 0 });
+  }, []);
 
   return (
     <div className='container mx-auto min-h-screen flex flex-col items-center justify-start '>
