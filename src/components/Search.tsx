@@ -60,7 +60,7 @@ const Search: React.FC<SearchProps> = ({ searchRef, visible }) => {
         ref={inputRef}
         onChange={(e) => onInput(e)}
         placeholder='Search...'
-        className={`w-[400px] focus:border-info border-2 z-30 relative rounded-xl bg-slate-600 outline-none px-12 py-2 text-xl bg-no-repeat bg-[length:25px] bg-[center_left_14px] bg-[url"${searchIcon}")] placeholder:text-lg border-slate-500`}
+        className={`w-[400px] focus:border-info border-2 border-slate-500 rounded-xl bg-slate-600 outline-none px-12 py-2 text-xl bg-no-repeat bg-[length:25px] bg-[center_left_14px] bg-[url("${searchIcon}")] placeholder:text-lg`}
       />
       {value && !isFetching && (
         <img

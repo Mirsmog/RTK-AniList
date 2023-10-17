@@ -1,6 +1,7 @@
 import React from 'react';
 import { useGetAnimeEpisodeQuery } from '../../services/animeApi';
 import { AnimeInfo } from '../../services/types/AnimeInfo';
+// import { useLocalStorage } from '@mantine/hooks';
 
 interface PlayerProps extends AnimeInfo {}
 
@@ -18,6 +19,8 @@ const Player: React.FC<PlayerProps> = ({ image, episodes, title }) => {
   React.useEffect(() => {
     setCurrentEpisode(localLastEpisode);
   }, [localLastEpisode]);
+  // const [localLastEpisode] = useLocalStorage<string>({ key: title + '_LAST_EPISODE', defaultValue: episodes[0].id });
+  // const [localWatched] = useLocalStorage<string[]>({ key: title + '_WATCHED_EPISODE', defaultValue: [episodes[0].id] });
 
   const [completed, setCompleted] = React.useState(false);
   const [watched, setWatched] = React.useState<string[]>(localWatched);
