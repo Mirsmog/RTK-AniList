@@ -23,8 +23,6 @@ const Search: React.FC<SearchProps> = ({ searchRef, visible }) => {
     state.filter.past.length > 0 ? state.filter.past[state.filter.past.length - 1].searchValue : ''
   );
 
-  // TODO: Избавится от пустова QUERY запроса при загруски страницы
-  // Пример. const { data, isFetching } = useGetSearchedAnimeQuery(searchValue, { skip: !searchValue })
   const { data, isFetching, isLoading } = useGetSearchedAnimeQuery(searchValue);
   const resultList = data?.results ? data.results : [];
   const hasNextPage = data?.hasNextPage ? data.hasNextPage : false;
