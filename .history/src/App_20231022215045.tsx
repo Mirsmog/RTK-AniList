@@ -9,7 +9,7 @@ import Bookmarks from './pages/Bookmarks';
 const App: FC = () => {
   return (
     <div className='bg-slate-800 w-full h-full text-white font-Raleway'>
-      <div className=''></div>
+      <div className='bg-gray-500'></div>
       <Routes>
         <Route path='/' element={<Default />}>
           <Route index element={<Home />}></Route>

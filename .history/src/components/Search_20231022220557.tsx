@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import store from "../redux/store";
 import MainCard from "./mainCard";
 import clearIcon from "../assets/clear.svg";
-// import { default as searchIcon } from "../assets/search.svg";
+import { default as searchIcon } from "../assets/search.svg";
 
 interface SearchProps {
   searchRef: React.RefObject<HTMLDivElement>;
@@ -66,7 +66,7 @@ const Search: React.FC<SearchProps> = ({ searchRef, visible }) => {
         ref={inputRef}
         onChange={(e) => onInput(e)}
         placeholder="Search..."
-        className={`w-[400px] relative top-0 right-0 z-30 focus:border-info border-2 border-slate-500 rounded-xl bg-slate-600 outline-none px-12 py-2 text-xl bg-no-repeat bg-[length:25px] bg-[center_left_14px] bg-[url("./assets/search.svg")] placeholder:text-lg`}
+        className={`w-[400px] relative top-0 right-0 z-30 focus:border-info border-2 border-slate-500 rounded-xl bg-slate-600 outline-none px-12 py-2 text-xl bg-no-repeat bg-[length:25px] bg-[center_left_14px] bg-[url("${searchIcon}")] placeholder:text-lg`}
       />
       {value && !isFetching && (
         <img
