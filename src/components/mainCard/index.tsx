@@ -6,7 +6,6 @@ import {
   useGetBookmarksQuery,
 } from "../../services/animeApi";
 import React from "react";
-import MainCardSkeleton from "./skeleton";
 
 interface ISearchProps extends Anime {
   isSearchCard: boolean;
@@ -41,7 +40,6 @@ const MainCard: React.FC<ISearchProps> = ({
       !isLoading && (await addBookmarkMutation(anime));
     }
   };
-
 
   return isSearchCard ? (
     <li className="w-full flex gap-4 relative" key={id}>
