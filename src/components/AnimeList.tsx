@@ -1,9 +1,9 @@
 import { useInView } from 'react-intersection-observer';
 import React, { FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
-import { setPage, setSearchPage } from '../redux/slices/filterSlice';
+import { setPage, setSearchPage } from '../redux/slices/filter';
 import MainCard from './mainCard';
-import MainCardSkelet from './mainCard/skeleton';
+import MainCardSkeleton from './mainCard/skeleton';
 import Spinner from './Spinner';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { SerializedError } from '@reduxjs/toolkit';
@@ -42,7 +42,7 @@ const AnimeList: FC<AniListProps> = ({
   };
 
   const items = animeList.map((obj) => <MainCard isSearchCard={false} {...obj} key={obj.id} />);
-  const skeletons = [...Array(12)].map((_, i) => <MainCardSkelet key={i} />);
+  const skeletons = [...Array(18)].map((_, i) => <MainCardSkeleton key={i} />);
 
   return (
     <ul className='flex flex-wrap gap-x-6 flex-gap gap-y-8 mb-12'>

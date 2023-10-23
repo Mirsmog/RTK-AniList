@@ -1,17 +1,13 @@
-import { useGetAnimeInfoQuery } from '../services/animeApi';
-import { Anime } from '../services/types/Anime';
-import MainCard from './mainCard';
-import MainCardSkelet from './mainCard/skeleton';
+import { Anime } from "../services/types/Anime";
+import MainCard from "./mainCard";
+import MainCardSkeleton from "./mainCard/skeleton";
 
-interface Props {
-  nameId: string;
-}
-const BookmarkCard: React.FC<Props> = ({ nameId }) => {
-  const { data, isSuccess } = useGetAnimeInfoQuery(nameId);
+const isSuccess = true;
+const BookmarkCard: React.FC<Anime> = ({ id, image, title }) => {
   return isSuccess ? (
-    <MainCard {...(data as Anime)} id={nameId} isSearchCard={false} />
+    <MainCard {...( as Anime)} id={nameId} isSearchCard={false} />
   ) : (
-    <MainCardSkelet key={nameId} />
+    <MainCardSkeleton key={nameId} />
   );
 };
 export default BookmarkCard;

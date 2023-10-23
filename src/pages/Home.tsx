@@ -21,8 +21,8 @@ const Home: FC = () => {
   }, []);
 
   return (
-    <div className='container mx-auto min-h-screen flex flex-col items-center justify-start '>
-      <div className=' mt-12 max-w-[872px] w-full'>
+    <div className='max-w-[1320px] mx-auto min-h-screen flex flex-col items-center justify-start '>
+      <div className=' mt-12 w-full'>
         <div className={'dropdown mb-6 w-full'}>
           <label
             tabIndex={0}

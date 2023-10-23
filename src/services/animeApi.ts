@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IGetData } from '../models/anime.model';
 import { AnimeInfo } from './types/AnimeInfo';
 import { animeEpisode } from './types/AnimeEpisode';
-import { Bookmarks } from './types/Bookmarks';
+import { Anime } from './types/Anime';
 
 export const animeApi = createApi({
   reducerPath: 'animeApi',
@@ -74,7 +74,7 @@ export const animeApi = createApi({
       },
     }),
 
-    getBookmarks: build.query<Bookmarks[], void>({
+    getBookmarks: build.query<Anime[], void>({
       query: () => ({
         url: 'https://65266250917d673fd76c20bc.mockapi.io/favorites',
         method: 'GET',
@@ -82,17 +82,17 @@ export const animeApi = createApi({
       providesTags: () => ['Bookmarks'],
     }),
 
-    addBookmark: build.mutation<string, { nameId: string }>({
-      query: (nameId) => ({
+    addBookmark: build.mutation<Anime, Anime>({
+      query: (data) => ({
         url: 'https://65266250917d673fd76c20bc.mockapi.io/favorites',
         method: 'POST',
-        body: nameId,
+        body: data,
       }),
       invalidatesTags: ['Bookmarks'],
     }),
-    deleteBookmark: build.mutation<string, string | null>({
-      query: (nameId = '') => ({
-        url: `https://65266250917d673fd76c20bc.mockapi.io/favorites/${nameId}`,
+    deleteBookmark: build.mutation<string, string | undefined>({
+      query: (mockId = '') => ({
+        url: `https://65266250917d673fd76c20bc.mockapi.io/favorites/${mockId}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Bookmarks'],

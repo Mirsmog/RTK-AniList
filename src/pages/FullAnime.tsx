@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useGetAnimeInfoQuery } from '../services/animeApi';
-import Player from '../components/VideoPlayer/Player';
+import Player from '../components/Player';
 import FullCard from '../components/FullCard';
 import FullAnimeSkelet from '../components/FullAnimeSkelet';
 

@@ -1,14 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { animeApi } from '../../services/animeApi';
-import { setupListeners } from '@reduxjs/toolkit/query';
-import filter from '../slices/filterSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import { animeApi } from "../../services/animeApi";
+import { setupListeners } from "@reduxjs/toolkit/query";
+import filter from "../slices/filter";
 
 const store = configureStore({
   reducer: {
     [animeApi.reducerPath]: animeApi.reducer,
     filter,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(animeApi.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(animeApi.middleware),
 });
 
 setupListeners(store.dispatch);

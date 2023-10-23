@@ -1,6 +1,6 @@
 import React from 'react';
-import { useGetAnimeEpisodeQuery } from '../../services/animeApi';
-import { AnimeInfo } from '../../services/types/AnimeInfo';
+import { useGetAnimeEpisodeQuery } from '../services/animeApi';
+import { AnimeInfo } from '../services/types/AnimeInfo';
 // import { useLocalStorage } from '@mantine/hooks';
 
 interface PlayerProps extends AnimeInfo {}
