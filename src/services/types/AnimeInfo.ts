@@ -1,4 +1,4 @@
-import { IGenres } from '@/Anime';
+import { IGenres } from '@/services/types/Anime';
 
 export interface AnimeInfo {
   id: string;
