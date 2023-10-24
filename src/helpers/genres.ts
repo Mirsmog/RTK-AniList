@@ -1,4 +1,4 @@
-import { IGenres } from '../services/types/Anime';
+import { IGenres } from '@/services/types/Anime';
 
 export const genreList: IGenres[] = [
   IGenres.action,

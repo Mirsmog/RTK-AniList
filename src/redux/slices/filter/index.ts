@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IGenres } from '../../../services/types/Anime';
+import { IGenres } from '@/services/types/Anime';
 import undoable from 'redux-undo';
 
 interface FilterState {

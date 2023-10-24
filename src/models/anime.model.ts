@@ -1,4 +1,4 @@
-import { Anime } from "../services/types/Anime";
+import { Anime } from "@/services/types/Anime";
 
 export interface IGetData {
   currentPage: string;

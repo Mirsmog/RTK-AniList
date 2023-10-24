@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import AnimeList from "../components/AnimeList";
-import { useGetSearchedAllQuery } from "../services/animeApi";
-import { useAppSelector } from "../hooks/hooks";
-import ScrollButton from "../components/ScrollButton";
+import AnimeList from "@/components/AnimeList";
+import { useGetSearchedAllQuery } from "@/services/animeApi";
+import { useAppSelector } from "@/hooks/hooks";
+import ScrollButton from "@/components/ScrollButton";
 
 const SearchResult = () => {
   const { query = "" } = useParams();

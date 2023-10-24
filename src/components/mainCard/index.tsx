@@ -1,10 +1,10 @@
-import { Anime } from "../../services/types/Anime";
+import { Anime } from "@/services/types/Anime";
 import { Link } from "react-router-dom";
 import {
   useAddBookmarkMutation,
   useDeleteBookmarkMutation,
   useGetBookmarksQuery,
-} from "../../services/animeApi";
+} from "@/services/animeApi";
 import React from "react";
 
 interface ISearchProps extends Anime {

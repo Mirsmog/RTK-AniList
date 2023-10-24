@@ -1,13 +1,13 @@
 import { useInView } from 'react-intersection-observer';
 import React, { FC } from 'react';
-import { useAppDispatch, useAppSelector } from '../hooks/hooks';
-import { setPage, setSearchPage } from '../redux/slices/filter';
-import MainCard from './mainCard';
-import MainCardSkeleton from './mainCard/skeleton';
-import Spinner from './Spinner';
+import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
+import { setPage, setSearchPage } from '@/redux/slices/filter';
+import MainCard from '@/components/mainCard';
+import MainCardSkeleton from '@/components/mainCard/skeleton';
+import Spinner from '@/components/Spinner';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { SerializedError } from '@reduxjs/toolkit';
-import { Anime } from '../services/types/Anime';
+import { Anime } from '@/services/types/Anime';
 import { useLocation } from 'react-router-dom';
 
 interface AniListProps {

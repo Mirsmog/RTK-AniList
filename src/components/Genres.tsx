@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import { IGenres } from '../services/types/Anime';
-import { useAppDispatch, useAppSelector } from '../hooks/hooks';
-import { setGenre, setPage } from '../redux/slices/filter';
-import { genreList } from '../helpers/genres';
+import { IGenres } from '@/services/types/Anime';
+import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
+import { setGenre, setPage } from '@/redux/slices/filter';
+import { genreList } from '@/helpers/genres';
 import chunk from 'lodash.chunk';
-import store from '../redux/store';
-import { animeApi } from '../services/animeApi';
+import store from '@/redux/store';
+import { animeApi } from '@/services/animeApi';
 
 interface GenresProps {
   colSize: number;

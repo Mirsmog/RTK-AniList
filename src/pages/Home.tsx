@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import AnimeList from '../components/AnimeList';
-import { useAppSelector } from '../hooks/hooks';
-import Genres from '../components/Genres';
-import { useGetAnimeQuery } from '../services/animeApi';
+import AnimeList from '@/components/AnimeList';
+import { useAppSelector } from '@/hooks/hooks';
+import Genres from '@/components/Genres';
+import { useGetAnimeQuery } from '@/services/animeApi';
 
 const Home: FC = () => {
   const { page, genre } = useAppSelector((state) => state.filter.present);

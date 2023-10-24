@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { animeApi } from "../../services/animeApi";
+import { animeApi } from "@/services/animeApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import filter from "../slices/filter";
+import filter from "@/redux/slices/filter";
 
 const store = configureStore({
   reducer: {

@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { Anime } from "../services/types/Anime"
+import { Anime } from "@/services/types/Anime"
 import { Link } from "react-router-dom"
 
 interface SearchCardProps extends Anime {}

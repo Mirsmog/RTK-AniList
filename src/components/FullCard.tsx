@@ -1,7 +1,7 @@
-import { AnimeInfo } from '../services/types/AnimeInfo';
-import { shortText } from '../utils/shortText';
-import { useAppDispatch, useAppSelector } from '../hooks/hooks';
-import { setGenre } from '../redux/slices/filter';
+import { AnimeInfo } from '@/services/types/AnimeInfo';
+import { shortText } from '@/utils/shortText';
+import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
+import { setGenre } from '@/redux/slices/filter';
 
 interface FullCardProps extends AnimeInfo {}
 

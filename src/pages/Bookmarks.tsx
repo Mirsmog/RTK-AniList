@@ -1,7 +1,7 @@
 import React from "react";
-import MainCardSkeleton from "../components/mainCard/skeleton";
-import { useGetBookmarksQuery } from "../services/animeApi";
-import MainCard from "../components/mainCard";
+import MainCardSkeleton from "@/components/mainCard/skeleton";
+import { useGetBookmarksQuery } from "@/services/animeApi";
+import MainCard from "@/components/mainCard";
 
 const Favorites = () => {
   const { data: bookmarks = [], isSuccess } = useGetBookmarksQuery();
