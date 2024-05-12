@@ -1,11 +1,11 @@
-import { Anime } from "@/services/types/Anime";
-import { Link } from "react-router-dom";
+import { Anime } from '@/services/types/Anime';
+import { Link } from 'react-router-dom';
 import {
   useAddBookmarkMutation,
   useDeleteBookmarkMutation,
   useGetBookmarksQuery,
-} from "@/services/animeApi";
-import React from "react";
+} from '@/services/animeApi';
+import React from 'react';
 
 interface ISearchProps extends Anime {
   isSearchCard: boolean;
@@ -45,7 +45,7 @@ const MainCard: React.FC<ISearchProps> = ({
     <li className="w-full flex gap-4 relative" key={id}>
       <Link
         className=" group max-w-[140px] w-full object-cover min-h-[200px] bg-black rounded-md overflow-hidden"
-        to={`anime/${id}`}
+        to={`anime?v=${id}`}
         onClick={() => (document.title = title)}
       >
         <img
@@ -56,13 +56,13 @@ const MainCard: React.FC<ISearchProps> = ({
       </Link>
       <div className="w-full">
         <h3 className="text-xl font-semibold text-slate-300">
-          {title || "unknown"}
+          {title || 'unknown'}
         </h3>
         <div className="grow relative">
-          <span>{releaseDate || "unknown"} / </span>
+          <span>{releaseDate || 'unknown'} / </span>
           <span
             className={`${
-              subOrDub === "dub" ? "text-info" : "text-indigo-500"
+              subOrDub === 'dub' ? 'text-info' : 'text-indigo-500'
             } font-bold`}
           >
             {subOrDub}
@@ -70,7 +70,7 @@ const MainCard: React.FC<ISearchProps> = ({
           <svg
             onClick={() => addBookmark({ id, image, title } as Anime)}
             className={`w-6 h-6 mt-auto ml-auto absolute z-[11] right-2 top-0 fill-transparent  hover:stroke-yellow-400  cursor-pointer active:scale-75 transition-all duration-200 ${
-              added ? "fill-yellow-400 stroke-yellow-400" : "stroke-gray-400"
+              added ? 'fill-yellow-400 stroke-yellow-400' : 'stroke-gray-400'
             }`}
             viewBox="0 0 24 24"
             fill="currentColor"
@@ -89,7 +89,7 @@ const MainCard: React.FC<ISearchProps> = ({
       <svg
         onClick={() => addBookmark({ id, image, title } as Anime)}
         className={`w-6 h-6 mt-auto ml-auto absolute z-[11] opacity-0 group-hover:opacity-100 left-2 top-2 fill-transparent  hover:stroke-yellow-400  cursor-pointer active:scale-75 transition-all duration-200 ${
-          added ? "fill-yellow-400 stroke-yellow-400" : "stroke-gray-400"
+          added ? 'fill-yellow-400 stroke-yellow-400' : 'stroke-gray-400'
         }`}
         viewBox="0 0 24 24"
         fill="currentColor"
@@ -101,7 +101,7 @@ const MainCard: React.FC<ISearchProps> = ({
         />
       </svg>
       <Link
-        to={`/anime/${id}`}
+        to={`/anime?v=${id}`}
         className="block rounded-md overflow-hidden"
         onClick={() => (document.title = title)}
       >
@@ -113,7 +113,7 @@ const MainCard: React.FC<ISearchProps> = ({
           />
         </div>
       </Link>
-      <h2 className="mt-2 text-slate-300">{title || "Untitled"}</h2>
+      <h2 className="mt-2 text-slate-300">{title || 'Untitled'}</h2>
     </li>
   );
 };

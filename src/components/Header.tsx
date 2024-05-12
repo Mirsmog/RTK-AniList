@@ -1,6 +1,6 @@
-import { Link, NavLink } from "react-router-dom";
-import React, { FC } from "react";
-import Search from "@/components/Search";
+import { Link, NavLink } from 'react-router-dom';
+import React, { FC } from 'react';
+import Search from '@/components/Search';
 
 interface Props {
   overlay: React.RefObject<HTMLDivElement>;
@@ -20,19 +20,18 @@ const Header: FC<Props> = ({ overlay, watcher }) => {
         target.composedPath().includes(searchRef.current as HTMLDivElement) &&
         !target
           .composedPath()
-          .some((node: EventTarget) => (node as Node).nodeName === "IMG") &&
+          .some((node: EventTarget) => (node as Node).nodeName === 'IMG') &&
         !target
           .composedPath()
-          .some((node: EventTarget) => (node as Node).nodeName === "A")
+          .some((node: EventTarget) => (node as Node).nodeName === 'A')
       ) {
         setVisible(true);
       } else {
         setVisible(false);
       }
-      console.log(target);
     };
-    overlay.current?.addEventListener("click", handleClickOut);
-    return () => overlay.current?.removeEventListener("click", handleClickOut);
+    overlay.current?.addEventListener('click', handleClickOut);
+    return () => overlay.current?.removeEventListener('click', handleClickOut);
   }, []);
 
   return (
@@ -41,7 +40,7 @@ const Header: FC<Props> = ({ overlay, watcher }) => {
         className="container mx-auto flex items-center justify-between "
         ref={overlay}
       >
-        <Link to={"/"} className="text-4xl font-bold text-info">
+        <Link to={'/'} className="text-4xl font-bold text-info">
           <span className="text-white">RTK</span> AniList
         </Link>
         <Search
@@ -53,17 +52,17 @@ const Header: FC<Props> = ({ overlay, watcher }) => {
           <ul className="flex gap-4">
             <NavLink
               className={({ isActive }) =>
-                isActive ? "text-info nav-link_active" : "nav-link_hover"
+                isActive ? 'text-info nav-link_active' : 'nav-link_hover'
               }
-              to={"/"}
+              to={'/'}
             >
               Home
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                isActive ? "text-info nav-link_active" : "nav-link_hover"
+                isActive ? 'text-info nav-link_active' : 'nav-link_hover'
               }
-              to={"/bookmarks"}
+              to={'/bookmarks'}
             >
               Bookmarks
             </NavLink>
